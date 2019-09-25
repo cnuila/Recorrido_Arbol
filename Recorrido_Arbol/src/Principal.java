@@ -86,9 +86,19 @@ public class Principal extends javax.swing.JFrame {
                 boton_PreOrdenMouseClicked(evt);
             }
         });
+        boton_PreOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_PreOrdenActionPerformed(evt);
+            }
+        });
         jPanel1.add(boton_PreOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
 
         boton_Anchura.setText("Anchura");
+        boton_Anchura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_AnchuraMouseClicked(evt);
+            }
+        });
         jPanel1.add(boton_Anchura, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
         jLabel1.setText("Tipo de Recorrido:");
@@ -120,6 +130,18 @@ public class Principal extends javax.swing.JFrame {
         recorridoPreOrden(raiz);
         System.out.println("");
     }//GEN-LAST:event_boton_PreOrdenMouseClicked
+
+    private void boton_PreOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_PreOrdenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_PreOrdenActionPerformed
+
+    private void boton_AnchuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_AnchuraMouseClicked
+        DefaultTreeModel modelo = (DefaultTreeModel)arbol.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+        System.out.println("Recorrido Anchura:");
+        nivel(raiz);
+        System.out.println(" ");
+    }//GEN-LAST:event_boton_AnchuraMouseClicked
 
     /**
      * @param args the command line arguments
@@ -160,6 +182,18 @@ public class Principal extends javax.swing.JFrame {
         System.out.print(nodo+ "  ");
         for (int i = 0; i < nodo.getChildCount();i++){
             recorridoPreOrden((DefaultMutableTreeNode)nodo.getChildAt(i));
+        }
+    }
+    public void recorridoanchura(DefaultMutableTreeNode raiz){
+        for (int i = 0; i < raiz.getChildCount();i++){
+            System.out.print((DefaultMutableTreeNode)raiz.getChildAt(i)+"   ");
+        }
+    }
+    public void nivel(DefaultMutableTreeNode nivelnodo){
+        for (int i = 0; i < nivelnodo.getChildCount();i++){
+            nivel((DefaultMutableTreeNode)nivelnodo.getChildAt(i));
+            recorridoanchura((DefaultMutableTreeNode)nivelnodo.getChildAt(i));
+            
         }
     }
 
