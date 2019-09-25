@@ -145,9 +145,9 @@ public class Principal extends javax.swing.JFrame {
         DefaultTreeModel modelo = (DefaultTreeModel)arbol.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         System.out.println("Recorrido Anchura:");
-//        System.out.print(raiz.getChildAt(0)+"   ");
-//        System.out.print(raiz.getChildAt(1)+"   ");
-//        System.out.print(raiz+"   ");
+         System.out.print(raiz+"   ");
+        System.out.print(raiz.getChildAt(0)+"   ");
+        System.out.print(raiz.getChildAt(1)+"   ");
         nivel(raiz);
         mostrar();
         System.out.println(" ");
@@ -210,13 +210,16 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     public void mostrar(){
-       for (int i = anchura.size()-6; i >=0; i--) {
+       for (int i = anchura.size()-6; i >=6; i--) {
             System.out.print(anchura.get(i)+"   ");
         } 
-        for (int i = anchura.size()-1; i >=8; i--) {
+        for (int i = anchura.size()-1; i >7; i--) {
             System.out.print(anchura.get(i)+"   ");
         }
-        
+        for (int i = 5; i >=0; i--) {
+            System.out.print(anchura.get(i)+"   ");
+        }
+        anchura.clear();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
