@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -99,6 +100,11 @@ public class Principal extends javax.swing.JFrame {
                 boton_AnchuraMouseClicked(evt);
             }
         });
+        boton_Anchura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_AnchuraActionPerformed(evt);
+            }
+        });
         jPanel1.add(boton_Anchura, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
         jLabel1.setText("Tipo de Recorrido:");
@@ -139,10 +145,17 @@ public class Principal extends javax.swing.JFrame {
         DefaultTreeModel modelo = (DefaultTreeModel)arbol.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         System.out.println("Recorrido Anchura:");
+//        System.out.print(raiz.getChildAt(0)+"   ");
+//        System.out.print(raiz.getChildAt(1)+"   ");
+//        System.out.print(raiz+"   ");
         nivel(raiz);
-        System.out.print(raiz);
+        mostrar();
         System.out.println(" ");
     }//GEN-LAST:event_boton_AnchuraMouseClicked
+
+    private void boton_AnchuraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_AnchuraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_AnchuraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,17 +198,25 @@ public class Principal extends javax.swing.JFrame {
             recorridoPreOrden((DefaultMutableTreeNode)nodo.getChildAt(i));
         }
     }
-    public void recorridoanchura(DefaultMutableTreeNode raiz){
+    public void recorridoanchura(DefaultMutableTreeNode raiz,ArrayList anchura){
         for (int i = 0; i < raiz.getChildCount();i++){
-            System.out.print((DefaultMutableTreeNode)raiz.getChildAt(i)+"   ");
+            anchura.add(raiz.getChildAt(i).toString());
         }
     }
     public void nivel(DefaultMutableTreeNode nivelnodo){
         for (int i = 0; i < nivelnodo.getChildCount();i++){
             nivel((DefaultMutableTreeNode)nivelnodo.getChildAt(i));
-            recorridoanchura((DefaultMutableTreeNode)nivelnodo.getChildAt(i));
-            
+            recorridoanchura((DefaultMutableTreeNode)nivelnodo.getChildAt(i),anchura);
         }
+    }
+    public void mostrar(){
+       for (int i = anchura.size()-6; i >=0; i--) {
+            System.out.print(anchura.get(i)+"   ");
+        } 
+        for (int i = anchura.size()-1; i >=8; i--) {
+            System.out.print(anchura.get(i)+"   ");
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -206,4 +227,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+ ArrayList <String> anchura=new ArrayList<String>();;
 }
