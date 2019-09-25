@@ -140,6 +140,7 @@ public class Principal extends javax.swing.JFrame {
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         System.out.println("Recorrido Anchura:");
         nivel(raiz);
+        System.out.print(raiz);
         System.out.println(" ");
     }//GEN-LAST:event_boton_AnchuraMouseClicked
 
